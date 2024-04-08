@@ -30,6 +30,7 @@ class Bat extends PositionComponent
         RRect.fromRectAndRadius(Offset.zero & size.toSize(),
             cornerRadius), _paint
     );
+  }
 
     @override
     void onDragUpdate(DragUpdateEvent event) {
@@ -42,5 +43,5 @@ class Bat extends PositionComponent
           Vector2((position.x + dx).clamp(0, game.width), position.y),
           EffectController(duration: 0.1)));
     }
-  }
+
 }

@@ -30,6 +30,7 @@ class BrickBreaker extends FlameGame
     camera.viewfinder.anchor = Anchor.topLeft;
 
     world.add(PlayArea());
+
     world.add(Ball(
         position: size / 2,
         radius: ballRadius,
@@ -37,14 +38,19 @@ class BrickBreaker extends FlameGame
             .normalized()
           ..scale(height / 4)));
 
-    world.add(Bat(cornerRadius: const Radius.circular(ballRadius / 2), position: Vector2(width/2, height * 0.95), size: Vector2(batWidth, batHeight)))
+    world.add(Bat(
+        cornerRadius: const Radius.circular(ballRadius / 2),
+        position: Vector2(width / 2, height * 0.95),
+        size: Vector2(batWidth, batHeight)));
+
     debugMode = true;
   }
 
   @override
-  KeyEventResult onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+  KeyEventResult onKeyEvent(
+      KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     super.onKeyEvent(event, keysPressed);
-    switch(event.logicalKey){
+    switch (event.logicalKey) {
       case LogicalKeyboardKey.arrowLeft:
         world.children.query<Bat>().first.moveBy(-batStep);
       case LogicalKeyboardKey.arrowRight:
