@@ -1,4 +1,3 @@
-import 'package:brick_breaker/src/brick_breaker.dart';
 import 'package:flame/collisions.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +20,6 @@ class Ball extends CircleComponent with CollisionCallbacks, HasGameReference<Bri
       ..color = const Color(0xff1e6091)
       ..style = PaintingStyle.fill,
     children: [CircleHitbox()]);
-  );
 
   @override
   void update(double dt){
