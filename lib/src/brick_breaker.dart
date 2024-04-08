@@ -56,7 +56,7 @@ class BrickBreaker extends FlameGame
           )
     ]);
 
-    debugMode = true;
+    debugMode = false; //true;
   }
 
   @override

@@ -44,6 +44,7 @@ class Ball extends CircleComponent with CollisionCallbacks, HasGameReference<Bri
           velocity.x = - velocity.x;
         } else if (intersectionPoints.first.y >= game.height){
           removeFromParent();
+          //velocity.y = -velocity.y;
         }
       } else if (other is Bat){
         velocity.y = - velocity.y;
