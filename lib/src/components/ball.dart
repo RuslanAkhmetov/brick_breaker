@@ -1,4 +1,5 @@
 import 'package:flame/collisions.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,9 @@ import 'bat.dart';
 import 'brick.dart';
 import 'play_area.dart';
 
-class Ball extends CircleComponent with CollisionCallbacks, HasGameReference<BrickBreaker>{
+class Ball extends CircleComponent
+    with CollisionCallbacks, HasGameReference<BrickBreaker>{
+
   final Vector2 velocity;
   final double difficultyModifier;
   Ball({
@@ -43,7 +46,12 @@ class Ball extends CircleComponent with CollisionCallbacks, HasGameReference<Bri
         } else if (intersectionPoints.first.x >= game.width){
           velocity.x = - velocity.x;
         } else if (intersectionPoints.first.y >= game.height){
-          removeFromParent();
+          add(RemoveEffect(
+            delay: 0.35,
+            onComplete: (){
+              game.playState = PlayState.gameOver;
+            }));
+          //removeFromParent();
           //velocity.y = -velocity.y;
         }
       } else if (other is Bat){
